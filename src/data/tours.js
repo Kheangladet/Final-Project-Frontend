@@ -1,6 +1,6 @@
 import angkorwat from "../assets/image/tours/angkorwat.png";
 import kohronggg from "../assets/image/tours/kohronggg.png";
-import pp from "../assets/image/tours/pp.png";
+import pp from "../assets/image/tours/PP.png";
 import kiriomnp from "../assets/image/tours/kiriomnp.png";
 import mondulkiri from "../assets/image/tours/mondulkiri.png";
 import kampot from "../assets/image/tours/kampot.png";
