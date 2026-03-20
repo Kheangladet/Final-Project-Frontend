@@ -3,7 +3,7 @@ import TourCard from "../Components/TourCard";
 
 const Tours = () => {
   return (
-    <div className="mt-[60px]">
+    <div className="mt-0">
       <TourCard />
     </div>
   );

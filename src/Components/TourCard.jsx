@@ -8,7 +8,7 @@ const TourCard = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="mt-5 px-8">
+    <div className="mt-2 mx-5 px-8">
       <h1 className="font-bold text-xl">Our Popular Destination</h1>
       <p className="text-gray-400 font-medium text-sm mt-2">
         Popular destinations to kickstart your planning
