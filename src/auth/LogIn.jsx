@@ -1,77 +1,91 @@
 import React, { useState } from "react";
 
-export default function LogIn() {
+export default function LogIn({ trigger }) {
   const [open, setOpen] = useState(false);
   const [isLogin, setIsLogin] = useState(true);
+  const [showPassword, setShowPassword] = useState(false);
 
   return (
-    <div>
-      {/* Open Button */}
-      <button
-        onClick={() => setOpen(true)}
-        className="text-md bg-blue-500 text-white w-28 px-1 py-2 rounded-2xl font-medium hover:text-black transition-all duration-300"
-      >
-        Login
-      </button>
+    <>
+      {/* Trigger from Navbar */}
+      {trigger &&
+        React.cloneElement(trigger, {
+          onClick: () => setOpen(true),
+        })}
 
       {/* Modal */}
       {open && (
-        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
-          <div className="bg-white p-6 rounded-xl w-80 relative shadow-xl">
+        <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-50">
+          <div className="bg-white w-full max-w-md p-8 rounded-2xl shadow-2xl relative">
             {/* Close */}
             <button
               onClick={() => setOpen(false)}
-              className="absolute top-2 right-3 text-gray-500"
+              className="absolute top-4 right-4 text-gray-400 hover:text-black text-lg"
             >
-              ✖
+              ×
             </button>
 
             {/* Title */}
-            <h2 className="text-2xl font-bold mb-4 text-center">
-              {isLogin ? "Login" : "Register"}
+            <h2 className="text-2xl font-semibold text-gray-800 text-center mb-6">
+              {isLogin ? "Sign in to your account" : "Create your account"}
             </h2>
 
-            {/* Register-only field */}
+            {/* Register only */}
             {!isLogin && (
-              <input
-                type="text"
-                placeholder="Full Name"
-                className="w-full mb-3 p-2 border rounded-2xl"
-              />
+              <div className="mb-4">
+                <label className="block text-sm text-gray-600 mb-1">
+                  Full Name
+                </label>
+                <input className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" />
+              </div>
             )}
 
             {/* Email */}
-            <input
-              type="email"
-              placeholder="Email"
-              className="w-full mb-3 p-2 border rounded-2xl"
-            />
+            <div className="mb-4">
+              <label className="block text-sm text-gray-600 mb-1">
+                Email address
+              </label>
+              <input
+                type="email"
+                className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
+            </div>
 
             {/* Password */}
-            <input
-              type="password"
-              placeholder="Password"
-              className="w-full mb-4 p-2 border rounded-2xl"
-            />
+            <div className="mb-5 relative">
+              <label className="block text-sm text-gray-600 mb-1">
+                Password
+              </label>
+              <input
+                type={showPassword ? "text" : "password"}
+                className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
+              <button
+                onClick={() => setShowPassword(!showPassword)}
+                className="absolute right-3 top-9 text-sm text-gray-500"
+              >
+                {showPassword ? "Hide" : "Show"}
+              </button>
+            </div>
 
             {/* Button */}
-            <button className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition">
+            <button className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition">
               {isLogin ? "Sign In" : "Create Account"}
             </button>
 
             {/* Toggle */}
-            <p className="text-center mt-4 text-sm">
-              {isLogin ? "Don't have an account?" : "Already have an account?"}
+            <p className="text-center text-sm text-gray-600 mt-4">
+              {isLogin ? "Don’t have an account?" : "Already have an account?"}
               <button
                 onClick={() => setIsLogin(!isLogin)}
-                className="ml-2 text-blue-600 font-semibold"
+                className="ml-2 text-blue-600 hover:underline"
               >
-                {isLogin ? "Register" : "Login"}
+                {isLogin ? "Register" : "Sign In"}
               </button>
             </p>
           </div>
         </div>
       )}
-    </div>
+    </>
   );
 }

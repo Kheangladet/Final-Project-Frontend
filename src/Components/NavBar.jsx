@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import { Link, NavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { IoMdClose } from "react-icons/io";
+import { FiUser, FiCalendar } from "react-icons/fi";
 import { tours } from "../data/tours";
 import logo from "../assets/image/logo.png";
 import SearchBar from "./SearchBar";
@@ -12,116 +13,109 @@ const NavBar = () => {
 
   return (
     <div className="fixed top-0 left-0 w-full z-50 bg-white border-b border-gray-100">
-      <div className="flex items-center justify-between px-3 py-3">
+      <div className="flex items-center justify-between px-4 py-3">
         {/* Logo */}
-        <Link to={"/"} className="items-center text-blue-700">
-          <img src={logo} alt="logo" className="w-35 h-10 object-cover px-2" />
+        <Link to="/">
+          <img src={logo} alt="logo" className="w-32 h-10 object-contain" />
         </Link>
 
-        {/* Nav Links — hidden on mobile, row on desktop */}
+        {/* Nav Links */}
         <ul className="hidden md:flex items-center gap-6">
-          <NavLink
-            to="/"
-            className="text-md font-medium hover:text-black transition-all duration-300 text-blue-500"
-          >
-            Home
-          </NavLink>
-          <NavLink
-            to="/tours"
-            className="text-md font-medium hover:text-black transition-all duration-300 text-blue-500"
-          >
-            Tours
-          </NavLink>
-          <NavLink
-            to="/about"
-            className="text-md font-medium hover:text-black transition-all duration-300 text-blue-500"
-          >
-            About
-          </NavLink>
-          <NavLink
-            to="/team"
-            className="text-md font-medium hover:text-black transition-all duration-300 text-blue-500"
-          >
-            Team
-          </NavLink>
+          {["/", "/tours", "/about", "/team"].map((path, i) => {
+            const names = ["Home", "Tours", "About", "Team"];
+            return (
+              <NavLink
+                key={i}
+                to={path}
+                className={({ isActive }) =>
+                  `text-sm font-medium transition ${
+                    isActive
+                      ? "text-blue-600"
+                      : "text-gray-600 hover:text-blue-600"
+                  }`
+                }
+              >
+                {names[i]}
+              </NavLink>
+            );
+          })}
         </ul>
 
-        {/* Search Bar */}
-        <div className="w-40 sm:w-64 md:w-72">
+        {/* Search */}
+        <div className="hidden md:block w-64">
           <SearchBar data={tours} linkPrefix="/tours" />
         </div>
 
-        {/* Bookings + Login Buttons */}
-        <div className="hidden sm:flex items-center gap-2">
+        {/* Right Side Icons */}
+        <div className="hidden sm:flex items-center gap-4">
+          {/* Bookings */}
           <NavLink
             to="/bookings"
-            className="text-md bg-blue-500 text-center px-1 py-2 text-white w-30 rounded-2xl font-medium hover:text-black transition-all duration-300"
+            className="p-2 rounded-lg hover:bg-gray-100 transition group"
           >
-            Bookings
+            <FiCalendar
+              size={20}
+              className="text-gray-700 group-hover:text-blue-600"
+            />
           </NavLink>
-          <LogIn />
+
+          {/* Login */}
+          <LogIn
+            trigger={
+              <div className="p-2 rounded-lg hover:bg-gray-100 transition group cursor-pointer">
+                <FiUser
+                  size={20}
+                  className="text-gray-700 group-hover:text-blue-600"
+                />
+              </div>
+            }
+          />
         </div>
 
-        {/* Hamburger Menu Icon */}
+        {/* Mobile Menu Icon */}
         <div className="md:hidden">
           {menuopen ? (
-            <IoMdClose
-              onClick={() => setmenuopen(!menuopen)}
-              size={24}
-              className="hover:text-blue-500 transition-all duration-300 cursor-pointer"
-            />
+            <IoMdClose onClick={() => setmenuopen(false)} size={24} />
           ) : (
-            <GiHamburgerMenu
-              onClick={() => setmenuopen(!menuopen)}
-              size={20}
-              className="hover:text-blue-500 transition-all duration-300 cursor-pointer"
-            />
+            <GiHamburgerMenu onClick={() => setmenuopen(true)} size={20} />
           )}
         </div>
       </div>
 
       {/* Mobile Menu */}
       {menuopen && (
-        <div className="flex flex-col items-start gap-5 px-6 py-4 border-t border-gray-400 bg-white md:hidden">
-          <NavLink
-            to="/"
-            className="text-sm font-medium hover:text-blue-500 transition-all duration-300"
-            onClick={() => setmenuopen(false)}
-          >
-            Home
-          </NavLink>
-          <NavLink
-            to="/tours"
-            className="text-sm font-medium hover:text-blue-500 transition-all duration-300"
-            onClick={() => setmenuopen(false)}
-          >
-            Tours
-          </NavLink>
-          <NavLink
-            to="/about"
-            className="text-sm font-medium hover:text-blue-500 transition-all duration-300"
-            onClick={() => setmenuopen(false)}
-          >
-            About
-          </NavLink>
-          <NavLink
-            to="/team"
-            className="text-sm font-medium hover:text-blue-500 transition-all duration-300"
-            onClick={() => setmenuopen(false)}
-          >
-            Team
-          </NavLink>
+        <div className="flex flex-col gap-4 px-6 py-4 border-t bg-white md:hidden">
+          {["/", "/tours", "/about", "/team"].map((path, i) => {
+            const names = ["Home", "Tours", "About", "Team"];
+            return (
+              <NavLink
+                key={i}
+                to={path}
+                onClick={() => setmenuopen(false)}
+                className="text-sm text-gray-700 hover:text-blue-600"
+              >
+                {names[i]}
+              </NavLink>
+            );
+          })}
 
-          {/* Mobile Bookings + Login */}
-          <div className="flex items-center gap-2">
-            <NavLink
-              to="/bookings"
-              className="text-md bg-blue-500 text-center px-1 py-2 text-white w-20 rounded-2xl font-medium hover:text-black transition-all duration-300"
-              onClick={() => setmenuopen(false)}
-            >
-              Bookings
+          {/* Mobile Icons */}
+          <div className="flex items-center gap-4 pt-2">
+            <NavLink to="/bookings" onClick={() => setmenuopen(false)}>
+              <FiCalendar
+                className="text-gray-700 hover:text-blue-600"
+                size={20}
+              />
             </NavLink>
-            <LogIn />
+
+            <LogIn
+              trigger={
+                <FiUser
+                  size={20}
+                  className="text-gray-700 hover:text-blue-600 cursor-pointer"
+                />
+              }
+            />
           </div>
         </div>
       )}

@@ -9,6 +9,7 @@ import { CiLocationOn } from "react-icons/ci";
 import { IoCall } from "react-icons/io5";
 import { FaMessage } from "react-icons/fa6";
 import { IoIosTime } from "react-icons/io";
+import { FaCcVisa, FaCcMastercard, FaPaypal, FaApplePay } from "react-icons/fa";
 
 const Footer = () => {
   return (
@@ -54,7 +55,7 @@ const Footer = () => {
               <img
                 src={logo}
                 alt="logo"
-                className="w-32 h-auto object-contain"
+                className="w-45 h-auto object-contain"
               />
             </div>
             <p className="text-gray-500 text-sm leading-relaxed">
@@ -207,15 +208,11 @@ const Footer = () => {
           <p className="text-gray-600 text-xs tracking-wide">
             © {new Date().getFullYear()} Travio. All rights reserved.
           </p>
-          <div className="flex items-center gap-2">
-            {["Visa", "MC", "PayPal", "Amex"].map((card) => (
-              <span
-                key={card}
-                className="text-gray-600 text-xs border border-gray-700 px-2 py-0.5 rounded"
-              >
-                {card}
-              </span>
-            ))}
+          <div className="flex items-center gap-4 text-2xl text-gray-600">
+            <FaCcVisa className="hover:text-blue-600 transition" />
+            <FaCcMastercard className="hover:text-red-500 transition" />
+            <FaPaypal className="hover:text-blue-500 transition" />
+            <FaApplePay className="hover:text-red-400 transition" />
           </div>
         </div>
       </div>
