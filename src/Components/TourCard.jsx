@@ -67,23 +67,16 @@ const TourCard = () => {
 
             {/* Content */}
             <div className="p-4 space-y-2">
-              {/* Category badge on card */}
-              <span className="inline-block bg-blue-50 text-blue-400 text-xs font-semibold px-2.5 py-0.5 rounded-full">
-                {tour.category}
-              </span>
-
               <h2 className="font-bold text-lg">{tour.title}</h2>
               <p className="text-sm text-gray-500 line-clamp-2">
                 {tour.description}
               </p>
-
               <div className="flex justify-between text-sm pt-2">
                 <span className="text-gray-500">{tour.location}</span>
                 <span className="font-semibold text-blue-500">
                   {tour.price}
                 </span>
               </div>
-
               <div className="flex gap-2 pt-4">
                 <button
                   className="flex-1 bg-blue-500 text-white rounded-xl h-10 hover:bg-blue-600 transition"
