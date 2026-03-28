@@ -27,7 +27,7 @@ const Hero = () => {
       strings: bannerData.map((b) => b.title), // ✅ bannerData not banner
       typeSpeed: 40,
       backSpeed: 30,
-      backDelay: 3500,
+      backDelay: 2500,
       loop: true,
     });
 
