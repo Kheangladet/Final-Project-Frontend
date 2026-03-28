@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { BiHide } from "react-icons/bi";
+import { BiShow } from "react-icons/bi";
 
 export default function LogIn({ trigger }) {
   const [open, setOpen] = useState(false);
@@ -64,7 +66,7 @@ export default function LogIn({ trigger }) {
                 onClick={() => setShowPassword(!showPassword)}
                 className="absolute right-3 top-9 text-sm text-gray-500"
               >
-                {showPassword ? "Hide" : "Show"}
+                {showPassword ? <BiShow /> : <BiHide />}
               </button>
             </div>
 
