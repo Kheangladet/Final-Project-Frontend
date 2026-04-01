@@ -6,7 +6,7 @@ const About = () => {
       {/* 🌏 ABOUT TEXT */}
       <div className="max-w-6xl mx-auto px-6 py-16">
         <h2 className="text-3xl font-bold mb-6 text-center">
-          Discover Cambodia With Us ✈️
+          Discover Cambodia With Us
         </h2>
 
         <p className="text-gray-600 text-center max-w-3xl mx-auto mb-12">
