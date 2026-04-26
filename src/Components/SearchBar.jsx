@@ -18,6 +18,7 @@ const SearchBar = ({ data, linkPrefix }) => {
     if (!query) return text;
     const idx = text.toLowerCase().indexOf(query.toLowerCase());
     if (idx === -1) return text;
+
     return (
       <>
         {text.slice(0, idx)}
@@ -37,7 +38,6 @@ const SearchBar = ({ data, linkPrefix }) => {
 
   return (
     <div className="relative w-full max-w-md">
-      {/* Input */}
       <div
         className={`flex items-center gap-2.5 px-4 py-2.5 rounded-full bg-white border transition-all duration-200 ${
           isFocused
@@ -54,7 +54,7 @@ const SearchBar = ({ data, linkPrefix }) => {
         <input
           ref={inputRef}
           type="text"
-          placeholder="Search destinations…"
+          placeholder="Search destinations..."
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
           onFocus={() => setIsFocused(true)}
@@ -75,7 +75,6 @@ const SearchBar = ({ data, linkPrefix }) => {
         )}
       </div>
 
-      {/* Dropdown */}
       {searchTerm && isFocused && (
         <div className="absolute top-full left-0 right-0 mt-2 bg-white border border-gray-200 rounded-2xl shadow-lg overflow-hidden z-50">
           {filteredResults.length > 0 ? (

@@ -22,7 +22,7 @@ export const bannerData = [
     title: "Koh Rong Adventure",
     subtitle: "Tropical Paradise",
     description:
-      "Relax on crystal-clear beaches, snorkel in turquoise waters, and explore Cambodia’s most beautiful island.",
+      "Relax on crystal-clear beaches, snorkel in turquoise waters, and explore Cambodia's most beautiful island.",
     location: "Koh Rong, Cambodia",
     duration: "4 Days",
     price: "$450",
@@ -46,7 +46,7 @@ export const bannerData = [
     title: "Phnom Penh Discovery",
     subtitle: "Capital City Tour",
     description:
-      "Explore Cambodia’s vibrant capital, from the Royal Palace to historic landmarks and local markets.",
+      "Explore Cambodia's vibrant capital, from the Royal Palace to historic landmarks and local markets.",
     location: "Phnom Penh, Cambodia",
     duration: "2 Days",
     price: "$180",

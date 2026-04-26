@@ -4,6 +4,9 @@ import pp from "../assets/image/tours/PP.png";
 import kiriomnp from "../assets/image/tours/kiriomnp.png";
 import mondulkiri from "../assets/image/tours/mondulkiri.png";
 import kampot from "../assets/image/tours/kampot.png";
+import songsa from "../assets/image/details/songsa.png";
+import tree from "../assets/image/details/tree.png";
+import plantion from "../assets/image/details/plantion.png";
 
 export const tours = [
   {
@@ -14,6 +17,11 @@ export const tours = [
     duration: "2 Days",
     price: "$120",
     rating: 4.9,
+    reviews: 1248,
+    groupSize: "Up to 12 guests",
+    bestSeason: "Nov - Feb",
+    highlight: "Sunrise at Angkor Wat",
+    featured: "Most Booked",
     image: angkorwat,
     description:
       "Explore the world famous Angkor Wat temple complex and discover the rich history of the Khmer Empire.",
@@ -26,6 +34,11 @@ export const tours = [
     duration: "3 Days",
     price: "$180",
     rating: 4.8,
+    reviews: 932,
+    groupSize: "Up to 10 guests",
+    bestSeason: "Dec - Apr",
+    highlight: "Snorkeling and beach sunset",
+    featured: "Island Escape",
     image: kohronggg,
     description:
       "Relax on white sand beaches and crystal clear waters while enjoying snorkeling and island adventures.",
@@ -38,6 +51,11 @@ export const tours = [
     duration: "1 Day",
     price: "$60",
     rating: 4.6,
+    reviews: 684,
+    groupSize: "Up to 18 guests",
+    bestSeason: "All Year",
+    highlight: "Royal Palace and hidden food spots",
+    featured: "City Classic",
     image: pp,
     description:
       "Discover Cambodia's capital city including the Royal Palace, Silver Pagoda, and the vibrant markets.",
@@ -50,6 +68,11 @@ export const tours = [
     duration: "2 Days",
     price: "$95",
     rating: 4.7,
+    reviews: 756,
+    groupSize: "Up to 14 guests",
+    bestSeason: "Nov - Mar",
+    highlight: "River cruise and pepper farm",
+    featured: "Weekend Favorite",
     image: kampot,
     description:
       "Enjoy fresh seafood in Kep, explore Kampot pepper farms, and cruise along the beautiful Kampot river.",
@@ -62,6 +85,11 @@ export const tours = [
     duration: "1 Day",
     price: "$70",
     rating: 4.5,
+    reviews: 518,
+    groupSize: "Up to 15 guests",
+    bestSeason: "Jun - Jan",
+    highlight: "Pine forest trekking",
+    featured: "Nature Reset",
     image: kiriomnp,
     description:
       "Escape the city and explore pine forests, waterfalls, and cool mountain air in Kirirom National Park.",
@@ -74,8 +102,64 @@ export const tours = [
     duration: "3 Days",
     price: "$210",
     rating: 4.8,
+    reviews: 874,
+    groupSize: "Up to 8 guests",
+    bestSeason: "Oct - Feb",
+    highlight: "Waterfalls and elephant sanctuary",
+    featured: "Eco Adventure",
     image: mondulkiri,
     description:
       "Visit beautiful waterfalls, ride through the jungle, and experience Cambodia's elephant sanctuaries.",
+  },
+  {
+    id: 7,
+    title: "Kep Luxury Seaside Retreat",
+    category: "Beach",
+    location: "Kep, Cambodia",
+    duration: "2 Days",
+    price: "$145",
+    rating: 4.9,
+    reviews: 612,
+    groupSize: "Up to 8 guests",
+    bestSeason: "Nov - Apr",
+    highlight: "Oceanfront villas and sunset dining",
+    featured: "Luxury Coast",
+    image: songsa,
+    description:
+      "Slow down by the coast with boutique stays, fresh seafood, ocean views, and a relaxed weekend escape in Kep.",
+  },
+  {
+    id: 8,
+    title: "Cardamom Mountain Eco Escape",
+    category: "Nature",
+    location: "Cardamom Mountains, Cambodia",
+    duration: "3 Days",
+    price: "$195",
+    rating: 4.8,
+    reviews: 547,
+    groupSize: "Up to 9 guests",
+    bestSeason: "Oct - Feb",
+    highlight: "Forest lodges and guided eco trails",
+    featured: "Off-Grid Pick",
+    image: tree,
+    description:
+      "Reconnect with nature in Cambodia's rainforest landscapes through eco-lodges, trekking routes, and quiet river scenery.",
+  },
+  {
+    id: 9,
+    title: "Battambang Heritage Discovery",
+    category: "Heritage",
+    location: "Battambang, Cambodia",
+    duration: "2 Days",
+    price: "$110",
+    rating: 4.7,
+    reviews: 703,
+    groupSize: "Up to 14 guests",
+    bestSeason: "Nov - Feb",
+    highlight: "Bamboo train and colonial old town",
+    featured: "Culture Trail",
+    image: plantion,
+    description:
+      "Experience Battambang's art scene, colonial streets, countryside train rides, and one of Cambodia's most charming cultural cities.",
   },
 ];

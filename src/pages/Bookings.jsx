@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { IoArrowBackSharp } from "react-icons/io5";
 import { MdLocationOn } from "react-icons/md";
@@ -7,12 +7,9 @@ import { IoMdClose } from "react-icons/io";
 
 const Bookings = () => {
   const navigate = useNavigate();
-  const [bookings, setBookings] = useState([]);
-
-  useEffect(() => {
-    const stored = JSON.parse(localStorage.getItem("bookings") || "[]");
-    setBookings(stored);
-  }, []);
+  const [bookings, setBookings] = useState(() =>
+    JSON.parse(localStorage.getItem("bookings") || "[]"),
+  );
 
   const handleDelete = (id) => {
     const updated = bookings.filter((b) => b.id !== id);

@@ -1,5 +1,5 @@
 import React from "react";
-import { BsStack } from "react-icons/bs";
+import { Link } from "react-router-dom";
 import facebook from "../assets/image/footer/facebook.png";
 import instagram from "../assets/image/footer/instagram.png";
 import x from "../assets/image/footer/x.png";
@@ -11,10 +11,41 @@ import { FaMessage } from "react-icons/fa6";
 import { IoIosTime } from "react-icons/io";
 import { FaCcVisa, FaCcMastercard, FaPaypal, FaApplePay } from "react-icons/fa";
 
+const socialLinks = [
+  { src: x, alt: "X", href: "https://x.com" },
+  { src: linkedin, alt: "LinkedIn", href: "https://linkedin.com" },
+  { src: facebook, alt: "Facebook", href: "https://facebook.com" },
+  { src: instagram, alt: "Instagram", href: "https://instagram.com" },
+];
+
+const exploreLinks = [
+  { label: "All Tours", to: "/#tours" },
+  { label: "Popular Destinations", to: "/#tours" },
+  { label: "Adventure Trips", to: "/#tours" },
+  { label: "Beach Getaways", to: "/#tours" },
+  { label: "City Breaks", to: "/#tours" },
+  { label: "Cultural Tours", to: "/#tours" },
+];
+
+const companyLinks = [
+  { label: "About Us", to: "/#about" },
+  { label: "Traveler Reviews", to: "/#reviews" },
+  { label: "Bookings", to: "/bookings" },
+  { label: "Featured Tours", to: "/#tours" },
+];
+
+const supportLinks = [
+  { label: "Help Center", to: "/#about" },
+  { label: "Contact Us", to: "/#reviews" },
+  { label: "Privacy Policy", to: "/#about" },
+  { label: "Terms of Use", to: "/#about" },
+  { label: "Cancellation Policy", to: "/#about" },
+  { label: "Accessibility", to: "/#about" },
+];
+
 const Footer = () => {
   return (
     <footer className="mt-[60px]">
-      {/* Newsletter Banner */}
       <div className="relative overflow-hidden bg-blue-600 w-full px-8 py-10">
         <div
           className="absolute inset-0 opacity-10"
@@ -30,7 +61,7 @@ const Footer = () => {
               Get travel inspiration in your inbox
             </h2>
             <p className="text-blue-100 text-sm mt-2 font-light tracking-wide">
-              Deals, guides, and trip ideas — no spam, ever.
+              Deals, guides, and trip ideas, no spam, ever.
             </p>
           </div>
           <div className="w-full md:w-1/2 flex flex-col sm:flex-row items-center gap-3">
@@ -46,122 +77,89 @@ const Footer = () => {
         </div>
       </div>
 
-      {/* Main Footer */}
       <div className="bg-gray-950 w-full px-8 py-14">
         <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-10">
-          {/* Brand */}
           <div className="col-span-1 sm:col-span-2 lg:col-span-1">
             <div className="flex items-center mb-4">
-              <img
-                src={logo}
-                alt="logo"
-                className="w-45 h-auto object-contain"
-              />
+              <img src={logo} alt="logo" className="w-45 h-auto object-contain" />
             </div>
             <p className="text-gray-500 text-sm leading-relaxed">
               Curated travel experiences for the modern explorer. Every journey
               starts with a story.
             </p>
             <div className="flex gap-4 mt-6">
-              {[
-                { src: x, alt: "Twitter" },
-                { src: linkedin, alt: "LinkedIn" },
-                { src: facebook, alt: "Facebook" },
-                { src: instagram, alt: "Instagram" },
-              ].map((image, i) => (
-                <button
-                  key={i}
+              {socialLinks.map((item) => (
+                <a
+                  key={item.alt}
+                  href={item.href}
+                  target="_blank"
+                  rel="noreferrer"
                   className="w-8 h-8 rounded-full border border-gray-700 hover:border-blue-500 transition-all duration-200 flex items-center justify-center"
                 >
                   <img
-                    src={image.src}
-                    alt={image.alt}
+                    src={item.src}
+                    alt={item.alt}
                     className="w-4 h-4 object-contain"
                   />
-                </button>
+                </a>
               ))}
             </div>
           </div>
 
-          {/* Explore */}
           <div>
             <h3 className="text-white text-xs font-bold tracking-widest uppercase mb-5">
               Explore
             </h3>
             <ul className="space-y-3">
-              {[
-                "All Tours",
-                "Popular Destinations",
-                "Adventure Trips",
-                "Beach Getaways",
-                "City Breaks",
-                "Cultural Tours",
-              ].map((item) => (
-                <li key={item}>
-                  <a
-                    href="#"
+              {exploreLinks.map((item) => (
+                <li key={item.label}>
+                  <Link
+                    to={item.to}
                     className="text-gray-500 hover:text-blue-400 transition-colors duration-200 text-sm"
                   >
-                    {item}
-                  </a>
+                    {item.label}
+                  </Link>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Company */}
           <div>
             <h3 className="text-white text-xs font-bold tracking-widest uppercase mb-5">
               Company
             </h3>
             <ul className="space-y-3">
-              {[
-                "About Us",
-                "Our Team",
-                "Careers",
-                "Press",
-                "Blog",
-                "Partners",
-              ].map((item) => (
-                <li key={item}>
-                  <a
-                    href="#"
+              {companyLinks.map((item) => (
+                <li key={item.label}>
+                  <Link
+                    to={item.to}
                     className="text-gray-500 hover:text-blue-400 transition-colors duration-200 text-sm"
                   >
-                    {item}
-                  </a>
+                    {item.label}
+                  </Link>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Support */}
           <div>
             <h3 className="text-white text-xs font-bold tracking-widest uppercase mb-5">
               Support
             </h3>
             <ul className="space-y-3">
-              {[
-                "Help Center",
-                "Contact Us",
-                "Privacy Policy",
-                "Terms of Use",
-                "Cancellation Policy",
-                "Accessibility",
-              ].map((item) => (
-                <li key={item}>
-                  <a
-                    href="#"
+              {supportLinks.map((item) => (
+                <li key={item.label}>
+                  <Link
+                    to={item.to}
                     className="text-gray-500 hover:text-blue-400 transition-colors duration-200 text-sm"
                   >
-                    {item}
-                  </a>
+                    {item.label}
+                  </Link>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Contact Us */}
           <div>
             <h3 className="text-white text-xs font-bold tracking-widest uppercase mb-5">
               Contact Us
@@ -196,17 +194,16 @@ const Footer = () => {
               <li className="flex items-center gap-3">
                 <IoIosTime color="blue" />
                 <span className="text-gray-500 text-sm">
-                  Mon–Fri, 9am – 6pm PST
+                  Mon-Fri, 9am - 6pm PST
                 </span>
               </li>
             </ul>
           </div>
         </div>
 
-        {/* Bottom Bar */}
         <div className="max-w-6xl mx-auto mt-12 pt-6 border-t border-gray-800 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-gray-600 text-xs tracking-wide">
-            © {new Date().getFullYear()} Travio. All rights reserved.
+            &copy; {new Date().getFullYear()} Travio. All rights reserved.
           </p>
           <div className="flex items-center gap-4 text-2xl text-gray-600">
             <FaCcVisa className="hover:text-blue-600 transition" />
