@@ -7,6 +7,7 @@ import { tours } from "../data/tours";
 import logo from "../assets/image/logo.png";
 import SearchBar from "./SearchBar";
 import LogIn from "../auth/LogIn";
+import { useAppContext } from "../context/AppContext";
 
 const navItems = [
   { id: "home", label: "Home" },
@@ -19,6 +20,7 @@ const NavBar = () => {
   const [menuopen, setmenuopen] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
+  const { currentUser, userBookings } = useAppContext();
 
   const activeSection =
     location.pathname === "/"
@@ -81,13 +83,18 @@ const NavBar = () => {
           >
             <FiCalendar size={16} />
             Bookings
+            {userBookings.length > 0 && (
+              <span className="rounded-full bg-white/90 px-2 py-0.5 text-[11px] font-semibold text-blue-600">
+                {userBookings.length}
+              </span>
+            )}
           </NavLink>
 
           <LogIn
             trigger={
               <div className="flex items-center gap-2 rounded-full border border-gray-200 px-4 py-2 text-sm font-medium text-gray-600 hover:border-blue-200 hover:text-blue-600 hover:bg-blue-50/60 transition cursor-pointer">
                 <FiUser size={16} />
-                Account
+                {currentUser ? currentUser.name.split(" ")[0] : "Account"}
               </div>
             }
           />
@@ -129,13 +136,18 @@ const NavBar = () => {
             >
               <FiCalendar size={16} />
               Bookings
+              {userBookings.length > 0 && (
+                <span className="rounded-full bg-white px-2 py-0.5 text-[11px] font-semibold text-blue-600">
+                  {userBookings.length}
+                </span>
+              )}
             </NavLink>
 
             <LogIn
               trigger={
                 <div className="flex-1 flex items-center justify-center gap-2 rounded-2xl border border-gray-200 px-4 py-3 text-sm font-medium text-gray-700 hover:bg-gray-50 cursor-pointer">
                   <FiUser size={16} />
-                  Account
+                  {currentUser ? currentUser.name.split(" ")[0] : "Account"}
                 </div>
               }
             />

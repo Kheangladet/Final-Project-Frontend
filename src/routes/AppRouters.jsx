@@ -8,6 +8,7 @@ import NavBar from "../Components/NavBar";
 import Footer from "../Components/Footer";
 import Bookings from "../pages/Bookings";
 import Team from "../pages/Team";
+import { AppProvider } from "../context/AppContext";
 
 const ScrollToHash = () => {
   const location = useLocation();
@@ -37,19 +38,21 @@ const ScrollToHash = () => {
 
 const AppRouters = () => {
   return (
-    <BrowserRouter>
-      <ScrollToHash />
-      <NavBar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/tours" element={<Tours />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/reviews" element={<Team />} />
-        <Route path="/tours/:id" element={<ToursDetail />} />
-        <Route path="/bookings" element={<Bookings />} />
-      </Routes>
-      <Footer />
-    </BrowserRouter>
+    <AppProvider>
+      <BrowserRouter>
+        <ScrollToHash />
+        <NavBar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/tours" element={<Tours />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/reviews" element={<Team />} />
+          <Route path="/tours/:id" element={<ToursDetail />} />
+          <Route path="/bookings" element={<Bookings />} />
+        </Routes>
+        <Footer />
+      </BrowserRouter>
+    </AppProvider>
   );
 };
 
