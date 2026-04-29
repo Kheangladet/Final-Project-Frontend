@@ -1,11 +1,7 @@
 import React, { useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FaHeart, FaRegHeart, FaStar } from "react-icons/fa6";
-import {
-  MdGroups,
-  MdLocationOn,
-  MdOutlineCalendarMonth,
-} from "react-icons/md";
+import { MdGroups, MdLocationOn, MdOutlineCalendarMonth } from "react-icons/md";
 import Swal from "sweetalert2";
 import { tours } from "../data/tours";
 import { useAppContext } from "../context/AppContext";
@@ -31,11 +27,15 @@ const TourCard = () => {
     let nextTours = [...tours];
 
     if (selectedCategory !== "All") {
-      nextTours = nextTours.filter((tour) => tour.category === selectedCategory);
+      nextTours = nextTours.filter(
+        (tour) => tour.category === selectedCategory,
+      );
     }
 
     if (selectedDuration !== "All") {
-      nextTours = nextTours.filter((tour) => tour.duration === selectedDuration);
+      nextTours = nextTours.filter(
+        (tour) => tour.duration === selectedDuration,
+      );
     }
 
     if (showFavoritesOnly) {
@@ -73,6 +73,7 @@ const TourCard = () => {
     event.stopPropagation();
 
     const result = toggleFavorite(tourId);
+
     if (!result.ok) {
       Swal.fire({
         title: "Sign In Required",
@@ -80,7 +81,23 @@ const TourCard = () => {
         icon: "info",
         confirmButtonColor: "#2563eb",
       });
+      return;
     }
+
+    const Toast = Swal.mixin({
+      toast: true,
+      position: "bottom-end",
+      showConfirmButton: false,
+      timer: 2000,
+      timerProgressBar: true,
+    });
+
+    Toast.fire({
+      icon: result.saved ? "success" : "info",
+      title: result.saved
+        ? "Added to favourites ❤️"
+        : "Removed from favourites",
+    });
   };
 
   return (
@@ -170,7 +187,9 @@ const TourCard = () => {
           </label>
 
           <label className="flex cursor-pointer items-center justify-between rounded-2xl border border-gray-200 bg-gray-50 px-4 py-3">
-            <span className="text-sm font-medium text-gray-600">Saved only</span>
+            <span className="text-sm font-medium text-gray-600">
+              Saved only
+            </span>
             <input
               type="checkbox"
               checked={showFavoritesOnly}
@@ -208,8 +227,14 @@ const TourCard = () => {
                     <button
                       type="button"
                       onClick={(event) => handleFavoriteToggle(event, tour.id)}
-                      className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/95 text-rose-500 shadow-sm ring-1 ring-black/5 backdrop-blur"
-                      aria-label={isSaved ? "Remove favorite" : "Save favorite"}
+                      className={`inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/95 shadow-sm ring-1 ring-black/5 backdrop-blur transition-transform duration-150 active:scale-90 ${
+                        isSaved
+                          ? "text-rose-500"
+                          : "text-gray-400 hover:text-rose-400"
+                      }`}
+                      aria-label={
+                        isSaved ? "Remove favourite" : "Save favourite"
+                      }
                     >
                       {isSaved ? <FaHeart /> : <FaRegHeart />}
                     </button>
@@ -266,7 +291,10 @@ const TourCard = () => {
                   <div className="mt-4 grid gap-2 text-sm text-gray-500">
                     <div className="flex items-center justify-between gap-3">
                       <span className="flex min-w-0 items-center gap-2">
-                        <MdGroups size={16} className="shrink-0 text-blue-500" />
+                        <MdGroups
+                          size={16}
+                          className="shrink-0 text-blue-500"
+                        />
                         <span className="truncate">{tour.groupSize}</span>
                       </span>
                       <span className="whitespace-nowrap font-semibold text-blue-500">
@@ -308,7 +336,9 @@ const TourCard = () => {
 
       {filteredTours.length === 0 && (
         <div className="mt-10 rounded-[28px] border border-dashed border-gray-300 bg-white px-6 py-12 text-center shadow-sm">
-          <p className="text-lg font-semibold text-gray-900">No tours match these filters yet.</p>
+          <p className="text-lg font-semibold text-gray-900">
+            No tours match these filters yet.
+          </p>
           <p className="mt-2 text-sm text-gray-500">
             Try a different category, duration, or switch off saved-only mode.
           </p>
